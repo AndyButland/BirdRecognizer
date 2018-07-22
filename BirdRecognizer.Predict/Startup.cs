@@ -1,6 +1,6 @@
 ﻿namespace BirdRecognizer.Predict
 {
-    using BirdRecognizer.Predict.Services;
+    using BirdRecognizer.Predict.Extensions;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;

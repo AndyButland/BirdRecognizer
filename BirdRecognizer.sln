@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirdRecognizer.Predict", "BirdRecognizer.Predict\BirdRecognizer.Predict.csproj", "{B390156A-45B5-4370-90E2-6AAC94DED539}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirdRecognizer.Functions", "BirdRecognizer.Functions\BirdRecognizer.Functions.csproj", "{E51AC281-04DC-4656-9677-4B4450A91D0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirdRecognizer.Common", "BirdRecognizer.Common\BirdRecognizer.Common.csproj", "{2C367C5D-9425-4D45-8BBD-EFF1A3D8E20A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{B390156A-45B5-4370-90E2-6AAC94DED539}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B390156A-45B5-4370-90E2-6AAC94DED539}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B390156A-45B5-4370-90E2-6AAC94DED539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E51AC281-04DC-4656-9677-4B4450A91D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E51AC281-04DC-4656-9677-4B4450A91D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E51AC281-04DC-4656-9677-4B4450A91D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E51AC281-04DC-4656-9677-4B4450A91D0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C367C5D-9425-4D45-8BBD-EFF1A3D8E20A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C367C5D-9425-4D45-8BBD-EFF1A3D8E20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C367C5D-9425-4D45-8BBD-EFF1A3D8E20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C367C5D-9425-4D45-8BBD-EFF1A3D8E20A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

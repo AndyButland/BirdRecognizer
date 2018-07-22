@@ -1,4 +1,4 @@
-﻿namespace BirdRecognizer.Predict
+﻿namespace BirdRecognizer.Common
 {
     public enum ImageClassificationStatus
     {

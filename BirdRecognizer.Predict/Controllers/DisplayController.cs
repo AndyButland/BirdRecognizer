@@ -2,8 +2,9 @@
 {
     using System;
     using System.Threading.Tasks;
+    using BirdRecognizer.Common;
+    using BirdRecognizer.Common.Services;
     using BirdRecognizer.Predict.Models;
-    using BirdRecognizer.Predict.Services;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
 

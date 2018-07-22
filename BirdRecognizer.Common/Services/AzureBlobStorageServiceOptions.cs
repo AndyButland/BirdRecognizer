@@ -1,4 +1,4 @@
-﻿namespace BirdRecognizer.Predict.Services
+﻿namespace BirdRecognizer.Common.Services
 {
     public class AzureBlobStorageServiceOptions
     {

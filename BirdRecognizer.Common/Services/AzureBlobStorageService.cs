@@ -1,4 +1,4 @@
-﻿namespace BirdRecognizer.Predict.Services
+﻿namespace BirdRecognizer.Common.Services
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

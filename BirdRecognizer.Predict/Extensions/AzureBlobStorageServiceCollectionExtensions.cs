@@ -1,6 +1,7 @@
-﻿namespace BirdRecognizer.Predict.Services
+﻿namespace BirdRecognizer.Predict.Extensions
 {
     using System;
+    using BirdRecognizer.Common.Services;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
 

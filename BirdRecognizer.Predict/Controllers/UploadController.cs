@@ -3,8 +3,8 @@
     using System;
     using System.IO;
     using System.Threading.Tasks;
+    using BirdRecognizer.Common.Services;
     using BirdRecognizer.Predict.Models;
-    using BirdRecognizer.Predict.Services;
     using Microsoft.AspNetCore.Mvc;
 
     [AutoValidateAntiforgeryToken]
