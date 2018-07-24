@@ -11,10 +11,19 @@
         <img src="@Model.ImageUrl" width="400" />
 
         <h4>Classification</h4>
+        
+        <p>Status: @Model.ClassificationStatus</p>
+        
+        @if (Model.Predictions.Any())
+        {
+            <h4>Prediction Detail</h4>
 
-        <dl class="row">
-            <dt class="col-sm-3">Status: </dt>
-            <dd class="col-sm-9">@Model.ClassificationStatus</dd>
-        </dl>
+            <div style="width: 200px">
+                @foreach (var prediction in Model.Predictions)
+                {
+                    <div>@prediction.Tag: <span style="float: right">@prediction.ProbabilityForDisplay</span></div>
+                }
+            </div>
+        }
     </div>
 </div>

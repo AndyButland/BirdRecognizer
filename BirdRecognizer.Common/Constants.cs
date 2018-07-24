@@ -12,6 +12,8 @@
         public static class ImageMetadataKeys
         {
             public static readonly string ClassificationStatus = "ClassificationStatus";
+
+            public static readonly string PredictionDetail = "PredictionDetail";
         }
     }
 }

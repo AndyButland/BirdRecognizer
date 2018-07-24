@@ -1,7 +1,10 @@
 {
-    "IsEncrypted": false,
-    "Values": {
-        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-        "AzureWebJobsDashboard": "UseDevelopmentStorage=true"
-    }
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
+    "PredictionKey": "e6f11b30466e4278a49af434aafe0bef",
+    "PredictionUrl": "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Prediction/abd02d56-4ec1-40e9-9a2c-55b29f8abb5a/image?iterationId=a7c004a4-f13b-4fec-8588-25cf9ce0fe17",
+    "ContainerName": "birds"
+  }
 }

@@ -11,20 +11,26 @@
         private readonly string _connectionString;
         private readonly string _containerName;
 
+        public AzureBlobStorageService(AzureBlobStorageServiceOptions options)
+        {
+            _connectionString = options.ConnectionString;
+            _containerName = options.ContainerName;
+        }
+
         public AzureBlobStorageService(IOptions<AzureBlobStorageServiceOptions> options)
         {
             _connectionString = options.Value.ConnectionString;
             _containerName = options.Value.ContainerName;
         }
 
-        public async Task UploadFile(string fileName, byte[] bytes, string contentType)
+        public async Task UploadFileAsync(string fileName, byte[] bytes, string contentType)
         {
             var blobClient = GetClient();
             var container = await GetOrCreateContainer(blobClient);
             await CreateAndUploadBlob(fileName, bytes, contentType, container);
         }
 
-        public async Task<IDictionary<string, string>> GetMetadataFromFile(string fileName)
+        public async Task<IDictionary<string, string>> GetMetadataFromFileAsync(string fileName)
         {
             var blobClient = GetClient();
             var container = await GetOrCreateContainer(blobClient);
@@ -41,6 +47,42 @@
 
             await blob.FetchAttributesAsync();
             return blob.Metadata;
+        }
+
+        public async Task SetMetadataOnFileAsync(string fileName, IDictionary<string, string> metadata)
+        {
+            var blobClient = GetClient();
+            var container = await GetOrCreateContainer(blobClient);
+            if (!await container.ExistsAsync())
+            {
+                return;
+            }
+
+            var blob = container.GetBlockBlobReference(fileName);
+            if (!await blob.ExistsAsync())
+            {
+                return;
+            }
+
+            await blob.FetchAttributesAsync();
+            foreach (var kvp in metadata)
+            {
+                AddOrUpdateMetadataValue(blob, kvp);
+            }
+
+            await blob.SetMetadataAsync();
+        }
+
+        private static void AddOrUpdateMetadataValue(CloudBlob blob, KeyValuePair<string, string> kvp)
+        {
+            if (blob.Metadata.ContainsKey(kvp.Key))
+            {
+                blob.Metadata[kvp.Key] = kvp.Value;
+            }
+            else
+            {
+                blob.Metadata.Add(kvp.Key, kvp.Value);
+            }
         }
 
         private CloudBlobClient GetClient()

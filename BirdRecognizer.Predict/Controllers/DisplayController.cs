@@ -1,12 +1,16 @@
 ﻿namespace BirdRecognizer.Predict.Controllers
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using BirdRecognizer.Common;
     using BirdRecognizer.Common.Services;
     using BirdRecognizer.Predict.Models;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
+
+    using Newtonsoft.Json;
 
     public class DisplayController : Controller
     {
@@ -26,10 +30,16 @@
                     ImageUrl = ConstructImageUrl(id),                
                 };
 
-            var imageMetadata = await _storageService.GetMetadataFromFile(id + ".jpg");
+            var imageMetadata = await _storageService.GetMetadataFromFileAsync(id + ".jpg");
             if (imageMetadata != null)
             {
                 model.ClassificationStatus = imageMetadata[Constants.ImageMetadataKeys.ClassificationStatus];
+                if (imageMetadata.ContainsKey(Constants.ImageMetadataKeys.PredictionDetail))
+                {
+                    model.Predictions =
+                        JsonConvert.DeserializeObject<List<DisplayViewModel.PredictionDetail>>(
+                            imageMetadata[Constants.ImageMetadataKeys.PredictionDetail]);
+                }
             }
             
             return View(model);

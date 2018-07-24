@@ -42,7 +42,7 @@
             using (var ms = new MemoryStream())
             {
                 await model.File.CopyToAsync(ms);
-                await _storageService.UploadFile(imageId + ".jpg", ms.ToArray(), "image/jpeg");
+                await _storageService.UploadFileAsync(imageId + ".jpg", ms.ToArray(), "image/jpeg");
             }
         }
     }
