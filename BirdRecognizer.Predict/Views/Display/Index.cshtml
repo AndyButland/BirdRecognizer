@@ -1,4 +1,6 @@
-﻿@model DisplayViewModel
+﻿@using BirdRecognizer.Common;
+@using BirdRecognizer.Predict.Extensions;
+@model DisplayViewModel
 @{
     ViewData["Title"] = "Display Image";
 }
@@ -12,16 +14,24 @@
 
         <h4>Classification</h4>
         
-        <p>Status: @Model.ClassificationStatus</p>
+        <p>
+            Status: @Model.ClassificationStatus
+            @if (Model.ClassificationStatus == ImageClassificationStatus.Pending.ToString())
+            {
+                <a href="#" onclick="window.location.reload(true);">(refresh)</a>
+            }
+        </p>
         
         @if (Model.Predictions.Any())
         {
+            <p><strong>@Model.PredictionSummary</strong></p>
+
             <h4>Prediction Detail</h4>
 
             <div style="width: 200px">
                 @foreach (var prediction in Model.Predictions)
                 {
-                    <div>@prediction.Tag: <span style="float: right">@prediction.ProbabilityForDisplay</span></div>
+                    <div>@prediction.Tag.FirstCharToUpper(): <span style="float: right">@prediction.ProbabilityForDisplay</span></div>
                 }
             </div>
         }
