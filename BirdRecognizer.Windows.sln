@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BirdRecognizer.Functions.Windows", "BirdRecognizer.Functions.Windows\BirdRecognizer.Functions.Windows.csproj", "{A2078F21-0B19-4855-8828-85A466A4461B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirdRecognizer.Common.Windows", "BirdRecognizer.Common.Windows\BirdRecognizer.Common.Windows.csproj", "{B72AA2ED-D649-4740-82D0-06A42FF6E06E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2078F21-0B19-4855-8828-85A466A4461B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2078F21-0B19-4855-8828-85A466A4461B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2078F21-0B19-4855-8828-85A466A4461B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2078F21-0B19-4855-8828-85A466A4461B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B72AA2ED-D649-4740-82D0-06A42FF6E06E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B72AA2ED-D649-4740-82D0-06A42FF6E06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B72AA2ED-D649-4740-82D0-06A42FF6E06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B72AA2ED-D649-4740-82D0-06A42FF6E06E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B1327684-D2D9-4830-802A-38579197F8D7}
+	EndGlobalSection
+EndGlobal

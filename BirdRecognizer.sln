@@ -9,10 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BirdRecognizer.Functions", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BirdRecognizer.Common", "BirdRecognizer.Common\BirdRecognizer.Common.csproj", "{2C367C5D-9425-4D45-8BBD-EFF1A3D8E20A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirdRecognizer.Functions.Windows", "BirdRecognizer.Functions.Windows\BirdRecognizer.Functions.Windows.csproj", "{CCB8023F-EFC8-4C69-ABBA-D9189A5D8FCF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirdRecognizer.Train", "BirdRecognizer.Train\BirdRecognizer.Train.csproj", "{429B6572-E89D-40A8-B301-D2B842655AB1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,14 +27,6 @@ Global
 		{2C367C5D-9425-4D45-8BBD-EFF1A3D8E20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C367C5D-9425-4D45-8BBD-EFF1A3D8E20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C367C5D-9425-4D45-8BBD-EFF1A3D8E20A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CCB8023F-EFC8-4C69-ABBA-D9189A5D8FCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CCB8023F-EFC8-4C69-ABBA-D9189A5D8FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CCB8023F-EFC8-4C69-ABBA-D9189A5D8FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CCB8023F-EFC8-4C69-ABBA-D9189A5D8FCF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{429B6572-E89D-40A8-B301-D2B842655AB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{429B6572-E89D-40A8-B301-D2B842655AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{429B6572-E89D-40A8-B301-D2B842655AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{429B6572-E89D-40A8-B301-D2B842655AB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

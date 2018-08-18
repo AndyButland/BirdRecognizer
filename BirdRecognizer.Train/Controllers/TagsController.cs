@@ -1,18 +1,14 @@
 ﻿namespace BirdRecognizer.Train.Controllers
 {
     using System;
-    using System.Configuration;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Mvc;
     using BirdRecognizer.Train.Models;
     using Microsoft.Cognitive.CustomVision.Training;
 
-    public class TagsController : Controller
+    public class TagsController : BaseController
     {
-        private readonly string ApiKey = ConfigurationManager.AppSettings["CustomVisionServiceTrainingApiKey"];
-        private readonly Guid ProjectId = Guid.Parse(ConfigurationManager.AppSettings["CustomVisionServiceProjectId"]);
-
         public async Task<ActionResult> Index()
         {
             var vm = new TagsViewModel
@@ -33,11 +29,6 @@
             }
 
             return View(vm);
-        }
-
-        private TrainingApi CreateTrainingApi()
-        {
-            return new TrainingApi { ApiKey = ApiKey };
         }
 
         public ActionResult Create()

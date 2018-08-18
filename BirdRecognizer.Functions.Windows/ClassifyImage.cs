@@ -5,7 +5,8 @@ namespace BirdRecognizer.Functions.Windows
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
-    using BirdRecognizer.Common.Services;
+    using BirdRecognizer.Common.Windows;
+    using BirdRecognizer.Common.Windows.Services;
     using Microsoft.Azure.WebJobs;
     using Microsoft.Cognitive.CustomVision.Prediction;
     using Microsoft.Cognitive.CustomVision.Prediction.Models;
@@ -31,7 +32,7 @@ namespace BirdRecognizer.Functions.Windows
         private static AzureBlobStorageService InstantiateStorageService()
         {
             var storageService = new AzureBlobStorageService(
-                new AzureBlobStorageServiceOptions
+                new AzureBlobStorageServiceArgs
                     {
                         ConnectionString = Environment.GetEnvironmentVariable("AzureWebJobsStorage"),
                         ContainerName = Environment.GetEnvironmentVariable("ContainerName")
@@ -42,8 +43,8 @@ namespace BirdRecognizer.Functions.Windows
         private static async Task<bool> AlreadyProcessed(IStorageService storageService, string name)
         {
             var metadata = await storageService.GetMetadataFromFileAsync(name);
-            return metadata[Common.Constants.ImageMetadataKeys.ClassificationStatus] 
-                != Common.ImageClassificationStatus.Pending.ToString();
+            return metadata[Constants.ImageMetadataKeys.ClassificationStatus] 
+                != ImageClassificationStatus.Pending.ToString();
         }
 
         private static async Task<ImagePredictionResultModel> GetPredictionResponse(Stream blob)
@@ -70,11 +71,11 @@ namespace BirdRecognizer.Functions.Windows
             return new Dictionary<string, string>
                 {
                     {
-                        Common.Constants.ImageMetadataKeys.ClassificationStatus,
-                        Common.ImageClassificationStatus.Completed.ToString()
+                        Constants.ImageMetadataKeys.ClassificationStatus,
+                        ImageClassificationStatus.Completed.ToString()
                     },
                     {
-                        Common.Constants.ImageMetadataKeys.PredictionDetail,
+                        Constants.ImageMetadataKeys.PredictionDetail,
                         GetMetaDataFromPrediction(response)
                     }
                 };
