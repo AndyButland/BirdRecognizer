@@ -1,0 +1,44 @@
+﻿@model BirdRecognizer.Train.Models.EditTagViewModel
+@{
+    ViewData["Title"] = "Edit Tag Details";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Edit Tag Details</h2>
+
+        @using (Html.BeginForm("Edit", "Tags", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <fieldset>
+                <legend>Tag Details</legend>
+
+                <div class="clearfix">
+                    @Html.LabelFor(m => m.Name)
+                    <div class="input">
+                        @Html.EditorFor(m => m.Name)
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                </div>
+
+                <div class="clearfix">
+                    @Html.LabelFor(m => m.Description)
+                    <div class="input">
+                        @Html.EditorFor(m => m.Description)
+                        @Html.ValidationMessageFor(m => m.Description)
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div>
+                    <br />
+                    <input class="btn btn-primary" type="submit" value="Save">
+                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn" })
+                </div>
+            </fieldset>
+
+            @Html.HiddenFor(m => m.Id)
+        }
+    </div>
+</div>
