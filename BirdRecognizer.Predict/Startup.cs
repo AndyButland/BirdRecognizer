@@ -18,7 +18,6 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
             services.AddStorageService(Configuration.GetSection("AzureBlobStorageService"));
         }
 

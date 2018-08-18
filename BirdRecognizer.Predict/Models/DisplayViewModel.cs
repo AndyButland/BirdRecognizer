@@ -9,6 +9,8 @@
 
         public string ClassificationStatus { get; set; }
 
+        public IList<PredictionDetail> Predictions { get; set; } = new List<PredictionDetail>();
+
         public string PredictionSummary
         {
             get
@@ -35,8 +37,6 @@
                 return "Sorry, I can't make that one out.";
             }
         }
-
-        public IList<PredictionDetail> Predictions { get; set; } = new List<PredictionDetail>();
 
         public class PredictionDetail
         {

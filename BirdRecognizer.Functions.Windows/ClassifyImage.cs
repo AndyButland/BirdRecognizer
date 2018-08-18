@@ -1,14 +1,14 @@
-namespace BirdRecognizer.Functions
+namespace BirdRecognizer.Functions.Windows
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Net.Http;
-    using System.Net.Http.Headers;
     using System.Threading.Tasks;
     using BirdRecognizer.Common.Services;
     using Microsoft.Azure.WebJobs;
+    using Microsoft.Cognitive.CustomVision.Prediction;
+    using Microsoft.Cognitive.CustomVision.Prediction.Models;
     using Newtonsoft.Json;
 
     public static class ClassifyImage
@@ -46,41 +46,26 @@ namespace BirdRecognizer.Functions
                 != Common.ImageClassificationStatus.Pending.ToString();
         }
 
-        private static async Task<PredictionResponse> GetPredictionResponse(Stream blob)
+        private static async Task<ImagePredictionResultModel> GetPredictionResponse(Stream blob)
         {
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Prediction-Key", 
-                Environment.GetEnvironmentVariable("PredictionKey"));
+            var endpoint = new PredictionEndpoint
+                {
+                    ApiKey = Environment.GetEnvironmentVariable("PredictionKey")
+                };
 
-            var url = Environment.GetEnvironmentVariable("PredictionUrl");
-
-            var byteData = GetImageAsByteArray(blob);
-
-            using (var content = new ByteArrayContent(byteData))
-            {
-                content.Headers.ContentType = 
-                    new MediaTypeHeaderValue("application/octet-stream");
-                var response = await client.PostAsync(url, content);
-                var responseString = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<PredictionResponse>(responseString);
-            }
+            var projectId = Guid.Parse(Environment.GetEnvironmentVariable("ProjectId"));
+            return await endpoint.PredictImageAsync(projectId, blob);
         }
-
-        private static byte[] GetImageAsByteArray(Stream blob)
-        {
-            var binaryReader = new BinaryReader(blob);
-            return binaryReader.ReadBytes((int)blob.Length);
-        }
-
+        
         private static async Task ApplyPredictionToBlob(IStorageService storageService, 
-                                                        string name, 
-                                                        PredictionResponse response)
+                                                        string name,
+                                                        ImagePredictionResultModel response)
         {
             var metadata = CreateMetadata(response);
             await WriteMetadataToFile(storageService, name, metadata);
         }
 
-        private static IDictionary<string, string> CreateMetadata(PredictionResponse response)
+        private static IDictionary<string, string> CreateMetadata(ImagePredictionResultModel response)
         {
             return new Dictionary<string, string>
                 {
@@ -95,10 +80,10 @@ namespace BirdRecognizer.Functions
                 };
         }
 
-        private static string GetMetaDataFromPrediction(PredictionResponse response)
+        private static string GetMetaDataFromPrediction(ImagePredictionResultModel response)
         {
             var predictionDetail = response.Predictions
-                .Select(x => new { tag = x.TagName, probability = Math.Round(x.Probability, 4) })
+                .Select(x => new { tag = x.Tag, probability = Math.Round(x.Probability, 4) })
                 .ToArray();
             return JsonConvert.SerializeObject(predictionDetail);
         }

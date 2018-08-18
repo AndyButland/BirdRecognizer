@@ -7,7 +7,8 @@
 
     public static class AzureBlobStorageServiceCollectionExtensions
     {
-        public static IServiceCollection AddStorageService(this IServiceCollection collection, IConfiguration config)
+        public static IServiceCollection AddStorageService(this IServiceCollection collection, 
+                                                           IConfiguration config)
         {
             if (collection == null)
             {

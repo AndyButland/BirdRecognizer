@@ -9,7 +9,6 @@
     using BirdRecognizer.Predict.Models;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
-
     using Newtonsoft.Json;
 
     public class DisplayController : Controller

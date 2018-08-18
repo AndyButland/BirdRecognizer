@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
+    "PredictionKey": "e6f11b30466e4278a49af434aafe0bef",
+    "ProjectId": "b1f38838-5ec3-46ac-b081-31bb896ce8f2",
+    "ContainerName": "birds"
+  }
+}

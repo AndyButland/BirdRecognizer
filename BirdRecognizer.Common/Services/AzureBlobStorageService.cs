@@ -96,7 +96,10 @@
             var container = blobClient.GetContainerReference(_containerName);
             await container.CreateIfNotExistsAsync();
 
-            var permissions = new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob };
+            var permissions = new BlobContainerPermissions
+                {
+                    PublicAccess = BlobContainerPublicAccessType.Blob
+                };
             await container.SetPermissionsAsync(permissions);
             return container;
         }
@@ -106,7 +109,9 @@
             var blob = container.GetBlockBlobReference(fileName);
             blob.Properties.ContentType = contentType;
 
-            blob.Metadata.Add(Constants.ImageMetadataKeys.ClassificationStatus, ImageClassificationStatus.Pending.ToString());
+            blob.Metadata.Add(
+                Constants.ImageMetadataKeys.ClassificationStatus, 
+                ImageClassificationStatus.Pending.ToString());
 
             await blob.UploadFromByteArrayAsync(bytes, 0, bytes.Length);
         }
