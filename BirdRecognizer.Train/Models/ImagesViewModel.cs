@@ -1,10 +1,18 @@
 ﻿namespace BirdRecognizer.Train.Models
 {
+    using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Web.Mvc;
 
     public class ImagesViewModel
     {
-        public IList<Image> Tags { get; set; } = new List<Image>();
+        [DisplayName("Tag: ")]
+        public Guid? SelectedTag { get; set; }
+        
+        public SelectList Tags { get; set; }
+
+        public IList<Image> Images { get; set; } = new List<Image>();
 
         public string Message { get; set; }
 

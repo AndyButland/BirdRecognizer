@@ -1,0 +1,46 @@
+﻿@model BirdRecognizer.Train.Models.ImagesViewModel
+@{
+    ViewData["Title"] = "Training Images";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Training Images</h2>
+
+        @if (!string.IsNullOrEmpty(Model.Message))
+        {
+            <p class="alert alert-success">@Model.Message</p>
+        }
+
+        <p>
+            @Html.ActionLink("Add New Image", "Create")
+        </p>
+
+        @using (Html.BeginForm("Index", "Images", FormMethod.Get))
+        {
+            <p>
+                @Html.LabelFor(m => m.SelectedTag)
+                @Html.DropDownListFor(m => m.SelectedTag, Model.Tags, "Select a tag to view images...")
+                <button type="submit" class="btn">Show Images</button>
+            </p>
+        }
+        
+        @if (Model.Images.Any())
+        {
+            <h3>Images Matching Tag</h3>
+
+            <div class="container">
+                <div class="row">
+                    @foreach (var image in Model.Images)
+                    {
+                        <div class="col-md-3">
+                            <img src="@image.Url" width="200" style="margin-bottom: 20px" />
+                        </div>
+                    }
+                </div>
+            </div>
+         }
+
+
+    </div>
+</div>

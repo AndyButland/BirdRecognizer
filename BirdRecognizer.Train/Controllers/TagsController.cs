@@ -17,9 +17,9 @@
                 };
 
             var api = CreateTrainingApi();
-            var tags = await api.GetTagsAsync(ProjectId);
+            var tagList = await api.GetTagsAsync(ProjectId);
             
-            foreach (var tag in tags.Tags.OrderBy(x => x.Name))
+            foreach (var tag in tagList.Tags.OrderBy(x => x.Name))
             {
                 vm.Tags.Add(new TagsViewModel.Tag
                     {
