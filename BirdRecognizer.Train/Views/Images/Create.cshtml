@@ -1,0 +1,42 @@
+@model BirdRecognizer.Train.Models.CreateImageViewModel
+@{
+    ViewData["Title"] = "Add New Image";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Add New Image</h2>
+
+        @using (Html.BeginForm("Create", "Images", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+        
+            <fieldset>
+                <legend>Image Details</legend>
+
+                <div class="form-field">
+                    @Html.LabelFor(m => m.TagId)
+                    <div class="form-field-input">                 
+                        @Html.DropDownListFor(m => m.TagId, Model.Tags, "Select a tag...")
+                        @Html.ValidationMessageFor(m => m.TagId)
+                    </div>
+                </div>
+                
+                <div class="form-field">
+                    @Html.LabelFor(m => m.ImageFiles)
+                    <div class="form-field-input">
+                        <input id="ImageFiles" name="ImageFiles" type="file" />
+                        @Html.ValidationMessageFor(m => m.ImageFiles)
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div>
+                    <br/>
+                    <input class="btn btn-primary" type="submit" value="Save">
+                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn" })
+                </div>
+            </fieldset>
+        } 
+    </div>
+</div>

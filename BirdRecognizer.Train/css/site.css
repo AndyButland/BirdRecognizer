@@ -33,3 +33,12 @@
         display: none;
     }
 }
+
+/* Application specific */
+fieldset .form-field { margin-bottom: 16px; clear: both; width: 410px; overflow: hidden; }
+fieldset .form-field label {float: left; width: 200px; padding-right: 10px }
+fieldset .form-field .form-field-input {float: left; width: 200px; }
+fieldset .form-field .form-field-input input, 
+fieldset .form-field .form-field-input select,
+fieldset .form-field .form-field-input textarea { width: 100%; }
+
