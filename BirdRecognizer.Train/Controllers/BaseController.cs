@@ -8,8 +8,11 @@
 
     public abstract class BaseController : Controller
     {
-        private readonly string _apiKey = ConfigurationManager.AppSettings["CustomVisionServiceTrainingApiKey"];
-        protected readonly Guid ProjectId = Guid.Parse(ConfigurationManager.AppSettings["CustomVisionServiceProjectId"]);
+        private readonly string _apiKey = 
+            ConfigurationManager.AppSettings["CustomVisionServiceTrainingApiKey"];
+
+        protected readonly Guid ProjectId = 
+            Guid.Parse(ConfigurationManager.AppSettings["CustomVisionServiceProjectId"]);
 
         protected TrainingApi CreateTrainingApi()
         {
